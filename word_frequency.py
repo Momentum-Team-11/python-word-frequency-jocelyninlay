@@ -25,19 +25,15 @@ def print_word_freq(file):
         text_string = text_string.replace("—", "")
         text_string = text_string.lower()
         text_string = text_string.split()
-        print(text_string[0:100])
+        #print(text_string[0:100])
+        #now loop through the words to remove STOP WORDS
+        for words in text_string:
+            # need to check if the words in the file are in STOP_WORDS
+            if words not in STOP_WORDS:
+                print(words)
 
-# def clean_text(text):
-#     text = text.lower()
-#     all_letters = "abcdefghijklmnopqrstuvwxyz"
-#     text_to_keep = ""
-#     for char in text:
-#         if char in all_letters:
-#             text_to_keep += char
-#     return text_to_keep
-#     print(text)
 
-# delete punctutation       
+# delete punctutation
 # deinfitely gonna need a for loop .. for lines in file??
 # want to use x.lower() to make everything lowercase
 # want to use x.split(" ") to make the text into a list
