@@ -1,3 +1,6 @@
+from audioop import reverse
+
+
 STOP_WORDS = [
     'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he',
     'i', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to', 'were',
@@ -35,12 +38,29 @@ def print_word_freq(file):
                     no_stop_words[word] += 1
                 else:
                     no_stop_words[word] = 1
-        #print(no_stop_words)
-        word_freq = []
-        for key, value in no_stop_words.items():
-            word_freq.append((value, key))
-        word_freq.sort(reverse=True)
-        print(word_freq)
+        #print(no_stop_words) 
+       #now flip the key and the value so we can sort it that way
+        # word_freq = []
+        # for key, value in no_stop_words.items():
+        #     word_freq.append((value, key))
+        # #now sort them with the highest number first, which needs a reverse = True
+        # word_freq.sort(reverse=True)
+        # #print(no_stop_words)
+        freqs = dict(sorted(no_stop_words.items(), key=lambda item: item[1], reverse=True))
+        #print(freqs)
+        for key,value in freqs.items():
+            print(f"{key:>20} | {(value * '*'):<20}")
+
+
+        return freqs
+        #now we want to use the dictionary to look up what we want to print
+        #and we need to print it in a specific format to match the readme directions
+        #i need a for loop
+        #print a concatitanation that includes the key and value seperated by a pipe |
+        # format it to look pretty
+        
+
+
 # delete punctutation
 # deinfitely gonna need a for loop .. for lines in file??
 # want to use x.lower() to make everything lowercase
